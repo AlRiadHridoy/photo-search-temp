@@ -12,6 +12,9 @@ const AppProvider = ({ children }) => {
   const [isFetching, setisFetching] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState({ state: false, msg: '' });
+
+
+  const [singleImg, setSingleImg] = useState({})
   
   // change nav round style
   const [navRound, setnavRound] = useState("rounded-xl");
@@ -19,7 +22,7 @@ const AppProvider = ({ children }) => {
   const [theme, setTheme] = useState("dark")
 
   const api_key = "31720365-4b62856b99eadabab89ac329d";
-  const url = `https://pixabay.com/api/?key=${api_key}&page=${page}&per_page=10&q=${
+  const url = `https://pixabay.com/api/?key=${api_key}&image_type=all&page=${page}&per_page=10&q=${
     query.replace(" ", "+") || "hacker"
   }&image_type=photo&min_height=400&min_width=400`;
 
@@ -78,9 +81,9 @@ const AppProvider = ({ children }) => {
   useEffect(() => {
     const event = window.addEventListener("scroll", () => {
       if(window.scrollY > 46) {
-        setnavRound("rounded-br-xl rounded-bl-xl backdrop-blur-xl");
+        setnavRound("rounded-br-xl rounded-bl-xl");
       } else {
-        setnavRound("rounded-xl backdrop-blur-2xl");
+        setnavRound("rounded-xl");
       }
       if (
         !isFetching &&
@@ -103,6 +106,7 @@ const AppProvider = ({ children }) => {
         page,
         query,
         theme,
+        singleImg,
         setPage,
         setData,
         setTemp,
@@ -111,6 +115,7 @@ const AppProvider = ({ children }) => {
         fetchImage,
         handleSubmit,
         setTheme,
+        setSingleImg,
       }}
     >
       {children}
