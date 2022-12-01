@@ -1,15 +1,18 @@
 import React from 'react'
 import { RiSearch2Line } from "react-icons/ri"
 import {BsFillSunFill} from "react-icons/bs"
+import {BsFillMoonFill} from "react-icons/bs"
 import img from "../images/icon.png"
 import { useGlobalContext } from '../context/useGlobalContext'
 
 function Search() {
-  const { query, setQuery, handleSubmit, navRound } = useGlobalContext();
+  const { query, setQuery, handleSubmit, navRound, setTheme, theme } = useGlobalContext();
 
   return (
     <section className="search sticky top-0 z-50 ">
-      <form className={`shadow-lg shadow-black/20  mb-8 flex gap-4 justify-between items-center backdrop-blur-2xl bg-white/30 p-3 ${navRound}`}>
+      <form
+        className={`shadow-lg shadow-black/20  mb-8 flex gap-4 justify-between items-center bg-slate-400/50 p-3 ${navRound}`}
+      >
         <div className="icon">
           <a
             href="http://alriadhridoy.netlify.app"
@@ -36,10 +39,24 @@ function Search() {
             <RiSearch2Line />
           </button>
         </div>
-        <div className="dark_theme">
-          <h1 className=" text-yellow-200 text-2xl pr-5">
-            <BsFillSunFill />
-          </h1>
+        <div className="theme md:pr-5">
+          <span
+            className=" text-2xl cursor-pointer dark:text-yellow-200 text-slate-100"
+            onClick={() =>
+              setTheme((theme) => {
+                if (theme === "dark") {
+                  return "light";
+                }
+                return "dark";
+              })
+            }
+          >
+            {theme === "dark" ? (
+              <BsFillSunFill />
+            ) : (
+              <BsFillMoonFill />
+            )}
+          </span>
         </div>
       </form>
     </section>

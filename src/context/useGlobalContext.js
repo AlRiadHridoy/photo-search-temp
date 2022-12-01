@@ -15,6 +15,8 @@ const AppProvider = ({ children }) => {
   
   // change nav round style
   const [navRound, setnavRound] = useState("rounded-xl");
+  //darkMode
+  const [theme, setTheme] = useState("dark")
 
   const api_key = "31720365-4b62856b99eadabab89ac329d";
   const url = `https://pixabay.com/api/?key=${api_key}&page=${page}&per_page=10&q=${
@@ -76,9 +78,9 @@ const AppProvider = ({ children }) => {
   useEffect(() => {
     const event = window.addEventListener("scroll", () => {
       if(window.scrollY > 46) {
-        setnavRound("rounded-b-xl");
+        setnavRound("rounded-br-xl rounded-bl-xl backdrop-blur-xl");
       } else {
-        setnavRound("rounded-xl");
+        setnavRound("rounded-xl backdrop-blur-2xl");
       }
       if (
         !isFetching &&
@@ -100,6 +102,7 @@ const AppProvider = ({ children }) => {
         data,
         page,
         query,
+        theme,
         setPage,
         setData,
         setTemp,
@@ -107,6 +110,7 @@ const AppProvider = ({ children }) => {
         setError,
         fetchImage,
         handleSubmit,
+        setTheme,
       }}
     >
       {children}

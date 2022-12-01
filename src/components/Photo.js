@@ -11,7 +11,7 @@ function Photo({ item }) {
         alt={type}
         className="w-full min-h-[14rem] max-h-[14rem] sm:min-h-[17rem] sm:max-h-[17rem]"
       />
-      <div className="user_info absolute bottom-[-100%] left-0 right-0 backdrop-blur-2xl bg-white/30 text-slate-300 rounded-sm p-2 flex items-center gap-2 justify-between">
+      <div className="user_info absolute bottom-[-100%] left-0 right-0 backdrop-blur-2xl bg-white/30 text-slate-300 dark:text-slate-200 rounded-sm p-2 flex items-center gap-2 justify-between">
         <div className="">
           <div className="flex gap-2 items-center">
             <BsFillCameraFill /> {user}

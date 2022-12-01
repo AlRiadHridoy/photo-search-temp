@@ -6,9 +6,9 @@ function PhotoContainer() {
   const { isLoading, data, error } = useGlobalContext();
   if (error.state) {
     return (
-      <div className="flex flex-col gap-4 justify-center items-center">
-        <h1 className="text-5xl text-center text-cyan-100">NAiS😷</h1>
-        <h2 className="text-2xl text-center text-cyan-200 flex items-center gap-2">
+      <div className="flex flex-col gap-4 justify-center items-center dark:text-sky-100 text-sky-800">
+        <h1 className="text-5xl text-center">NAiS😷</h1>
+        <h2 className="text-2xl text-center flex items-center gap-2">
           {error.msg}
           <TbServerOff className=" text-red-500" />
         </h2>
@@ -24,7 +24,7 @@ function PhotoContainer() {
         })}
       </div>
       {isLoading && (
-        <h2 className=" text-sky-100 text-3xl min-w-full text-center">
+        <h2 className=" dark:text-sky-100 text-sky-800 text-3xl min-w-full text-center">
           Loading...
         </h2>
       )}
