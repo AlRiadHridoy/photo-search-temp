@@ -1,6 +1,5 @@
 import React from 'react'
 import { RiSearch2Line } from "react-icons/ri"
-import { FaVideo } from "react-icons/fa"
 import {BsFillSunFill} from "react-icons/bs"
 import img from "../images/icon.png"
 import { useGlobalContext } from '../context/useGlobalContext'
