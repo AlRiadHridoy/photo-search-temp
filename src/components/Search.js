@@ -9,9 +9,9 @@ function Search() {
   const { query, setQuery, handleSubmit, navRound, setTheme, theme } = useGlobalContext();
 
   return (
-    <section className="search sticky top-0 z-50 ">
+    <section className="search sticky z-50 ">
       <form
-        className={`shadow-lg shadow-black/20  mb-8 flex gap-4 justify-between items-center bg-slate-400/50 p-3 ${navRound}`}
+        className={`shadow-lg shadow-black/20 backdrop-blur-md mb-8 flex gap-4 justify-between items-center bg-slate-400/50 p-3 ${navRound}`}
       >
         <div className="icon">
           <a
@@ -33,7 +33,7 @@ function Search() {
           />
           <button
             type="submit"
-            className=" text-sky-800 bg-slate-200 p-3 md:p-4 rounded-lg hover:bg-slate-300 ease-linear duration-100"
+            className=" text-sky-800 bg-slate-100 p-3 md:p-4 rounded-lg hover:bg-slate-200 ease-linear duration-100"
             onClick={(e) => handleSubmit(e)}
           >
             <RiSearch2Line />
@@ -51,11 +51,7 @@ function Search() {
               })
             }
           >
-            {theme === "dark" ? (
-              <BsFillSunFill />
-            ) : (
-              <BsFillMoonFill />
-            )}
+            {theme === "dark" ? <BsFillSunFill /> : <BsFillMoonFill />}
           </span>
         </div>
       </form>
