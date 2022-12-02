@@ -1,23 +1,48 @@
-import React from "react";
-import { useGlobalContext } from "../context/useGlobalContext";
-import {Link} from "react-router-dom"
+import React, { useEffect, useState } from "react";
+import { useParams , Link } from "react-router-dom";
 
 function SinglePhoto() {
-  const { singleImg } = useGlobalContext();
+  const {id} = useParams()
+  const [photo, setPhoto] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+  let url = `https://pixabay.com/api/?key=31720365-4b62856b99eadabab89ac329d&id=${id}`;
+
+  const fetchData = async () => {
+    setIsLoading(true);
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      setPhoto(...data.hits);
+    setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false)
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [id]);
+
   const {
     webformatURL: img,
     user,
     type,
     userImageURL: userImg,
     likes,
-    id,
     comments,
     views,
     downloads,
     tags,
     largeImageURL,
-  } = singleImg;
-  console.log(id);
+  } = photo;
+
+  if (isLoading) {
+        return <h2 className=" dark:text-sky-100 text-sky-800 text-3xl min-w-full text-center">
+          Loading...
+        </h2>
+  }
 
   return (
     <div className="container z-100 flex flex-col justify-center items-center text-slate-700 dark:text-slate-900">
@@ -71,7 +96,9 @@ function SinglePhoto() {
         </div>
       </div>
 
-      <button className="back_btn font-semibold text-slate-100 mt-5 px-4 py-2 rounded-md bg-teal-500 dark:bg-teal-500"><Link to="/">Back Home</Link></button>
+      <button className="back_btn font-semibold text-slate-100 mt-5 px-4 py-2 rounded-md bg-teal-500 dark:bg-teal-500">
+        <Link to="/">Back Home</Link>
+      </button>
     </div>
   );
 }

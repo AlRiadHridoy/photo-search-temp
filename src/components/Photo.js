@@ -11,7 +11,7 @@ function Photo({ item }) {
     <Link to={`/photo=${id}`} className="btn btn-primary btn-details">
       <div
         className="img_container flex flex-col relative duration-300 overflow-hidden rounded-md"
-        onClick={() => setSingleImg(item)}
+        onClick={() => setSingleImg(id)}
       >
         <img
           src={img}
